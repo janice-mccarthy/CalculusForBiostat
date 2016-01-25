@@ -1,0 +1,205 @@
+
+\documentclass[12pt,a4paper]{article} % Use A4 paper with a 12pt font size - different paper sizes will require manual recalculation of page margins and border positions
+
+% Generated with LaTeXDraw 2.0.8
+% Mon Jun 17 19:00:40 EDT 2013
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{marginnote} % Required for margin notes
+\usepackage{wallpaper} % Required to set each page to have a background
+\usepackage{lastpage} % Required to print the total number of pages
+\usepackage[left=1.3cm,right=4.6cm,top=1.8cm,bottom=4.0cm,marginparwidth=3.4cm]{geometry} % Adjust page margins
+\usepackage{amsmath} % Required for equation customization
+\usepackage{amssymb} % Required to include mathematical symbols
+\usepackage{xcolor} % Required to specify colors by name
+\usepackage{amsthm}
+\usepackage{float}
+
+
+\setlength{\parindent}{0cm} % Remove paragraph indentation
+\newcommand{\tab}{\hspace*{2em}} % Defines a new command for some horizontal space
+
+
+\title{Calculus Workshop - Series and Taylor Series Unit}
+%----------------------------------------------------------------------------------------
+
+\newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{exer}{Exercises}
+\newtheorem{thm}{Therorem}
+\begin{document}
+\maketitle
+\section{Series}
+Now that we have some understanding of sequences, we are ready to define \emph{series}.  A series is simply an infinite sum of the form:
+$$\sum_{n=0}^\infty a_n$$
+where $a_n$ is an infinite sequence.  There are some obvious questions we might ask about such a thing: For example, does the infinite sum exist?  Is it finite?  Consider:
+$$\sum_{n=0}^\infty \frac1{2^n}$$
+It can be shown that this sum does in fact exist, and its value is $2$.  But what does that really mean?  We cannot simply add the series until we get to infinity?  So how do we \emph{define} what is meant by an infinite sum?  You might guess it has something to do with sequences and convergence - and you would be right!  
+\begin{defn}
+Consider the series
+$$\sum_{n=0}^\infty a_n$$
+We define the $k^{th}$ partial sum, $S_k$ to  be
+$$S_k=\sum_{n=0}^k a_n$$ 
+\end{defn}
+That is, the $k^{th}$ partial sum is just the sum of the first $k$ terms of the sequence.  Now, for finite $k$, we understand very well how to add $k$ terms.  Note that that for $k=1,...,\infty$, $\left\{S_k\right\}$ is a \emph{sequence}!  This is very convenient, as we have already learned many things about sequences.  How does this infinite series relate to the infinite sum? In a very natural way:
+\begin{defn}
+Let $$\sum_{n=0}^\infty a_n$$ be a series and let 
+$$S_k=\sum_{n=0}^k a_n$$  denote its $k^{th}$ partial sum.  If $$\lim_{n\rightarrow\infty} S_k = S$$ exists and is finite, we say that the infinite series \emph{converges} and that its sum is $S$.
+\end{defn}
+So, simply put, the sum of an infinite series is the limit of its $k^{th}$ partial sums.  Thus, analysis of a series involves analysis of the properties of its partial sums.  There are a number of tests, based on this definition of convergence that one may apply to determine whether a series converges or diverges.  These are usually covered very well in calculus texts, so I will just list them here for you to review (this list is not exhaustive):
+\begin{enumerate}
+\item $n^{th}$ Term Test
+\item Ratio Test
+\item Root Test
+\item Alternating Series Test
+\item Integral Test
+\item Direct Comparison Test
+\end{enumerate}
+There is a nice summary of series convergence tests at: http://www.math.com/tables/expansion/tests.htm.  I would encourage you to review the proofs of the tests as well, as this will give greater insight and increase the likelihood of applying the tests correctly!
+\begin{example}
+Show that $$\sum_{n=0}^\infty \frac{1}{n^p}$$ 
+\end{example}
+converges for $p>1$.\\
+This is a simple application of the integral test, i.e., if the integral
+$$\int_{1}^\infty \frac{1}{x^p} dx$$
+converges, then so does 
+$$\sum_{n=0}^\infty \frac{1}{n^p}$$.
+We compute:
+$$\int_{1}^\infty \frac{1}{x^p} dx = \lim_{x\rightarrow\infty} \frac{x^{-p+1}}{-p+1} - \frac{1}{-p+1} \;\;\;\;\; \mathrm{for} \;\;\;\; p\neq 1$$
+which converges for $p>1$. (Note that if $p=1$, we are integrating $\frac{1}{x}$, whose anti-derivative is $\log(x)$ and the integral diverges.)
+\begin{exer}
+Show whether the following series converge or diverge:
+\end{exer}
+\begin{enumerate}
+\item $$\sum_{n=0}^\infty \frac{n^2}{2^n}$$
+\item $$\sum_{n=0}^\infty \frac{1}{n!}$$
+\item $$\sum_{n=0}^\infty \frac{(-1)^n}{n}$$
+\end{enumerate}
+\section{Taylor Series}
+One of the most fundamental manifestations of series in mathematics is the Taylor Series.  A Taylor series is a series representation of a (smooth, or infinitely differentiable) function.  Its usefulness stems from its relationship to polynomials and in its relatively simple computation.  Before diving in, let us recall the definition of a polynomial:
+\begin{defn}
+A polynomial $p$ is an expression of the form:
+$$p(x) = \sum_{n=0}^d a_n x^n$$
+The largest value of $n$ for which $a_n\neq 0$ is called the \emph{degree} of the polynomial.
+\end{defn}
+And now, the Taylor series:
+\begin{defn}
+Let $$f:\mathbb{R}\rightarrow\mathbb{R}$$ be infinitely differentiable at the point $x_0$.  Then:
+$$T(x)=\sum_{n=0}^\infty \frac{f^{(n)}(x_0)(x-x_0)^n}{n!}$$
+is the Taylor series for $f(x)$ about the point $x=x_0$.  
+\end{defn}
+A few words about this definition are in order.  First, the notation $f^{(n)}$ denotes the $n^{th}$ derivative of $f$ and $f^{(0)}$ is understood to be just the function $f$.  Note the use of the point $x_0$.  Taylor series expansions (we call these representations of functions 'expansions') are \emph{local}.  This means that they may only be valid (if they are valid at all!) in a small interval centered at $x_0$.  The distance from $x_0$ for which the series is valid is called the 'radius of convergence'. If a function is not infinitely differentiable at a point, its Taylor series centered at that point does not exist.  Even when a function's Taylor series exists and is convergent at a point, it may not converge to the function $f(x)$.  We will investigate these issues further later on in this review.  For now, let's see an example of a Taylor series:
+\begin{example}
+Find the Taylor series expansion for $\sin(x)$ about $x=0$.
+\end{example}
+From the definition of a Taylor series, we need to find an expression for the $n^{th}$ derivative of $\sin(x)$.  We start by experimenting:
+$$f(x) = \sin(x)$$
+$$f'(x) = \cos(x)$$
+$$f''(x) = -\sin(x)$$
+$$f'''(x) = -\cos(x)$$
+$$f^{(4)}(x) =\sin(x)$$
+$$f^{(5)}(x) = \cos(x)$$
+$$f^{(6)}(x) = -\sin(x)$$
+And now we note that we are expanding about $x=0$, so we need to evaluate the above at $x=0$.  We obtain the sequence:
+$$0,1,0,-1,0,1,0,...$$
+By now, the pattern should be clear: All even terms are zero.  The odd terms alternate between $\pm1$. We arrive at the following series:
+$$\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}$$
+Note that $2n+1$ picks up only the odd terms, where $(-1)^n$ alternates between $\pm1$.  
+\begin{exer}
+Expand the following in Taylor series
+\end{exer}
+\begin{enumerate}
+\item $$f(x) = \cos(x)$$ about $x=0$
+\item $$f(x) = log(x)$$ about $x=1$
+\end{enumerate}
+\section{Taylor Polynomials, Remainders and Radius of Convergence}
+One of the most important application of Taylor Series is to approximate the value of more complicated (or sometimes unknown) functions.  We can think of the Taylor Series as a 'polynomial of infinite degree' in some sense.  Suppose we have computed the Taylor series for a function $f$.  If we truncate the series at finite $n$, we have a polynomial of degree $n$. Such a polynomial is an approximation to the function $f$.  A reasonable question to ask would be: 'How good is the approximation and for what values of $x$ is it valid'?
+
+\subsection{Linear Approximation}
+You may not realize it, but you met a Taylor polynomial very early on in your study of calculus.  Recall the following:
+\begin{equation}
+T_1(x) = f(x_0) + f'(x_0)(x-x_0)
+\end{equation}
+This is the equation for the tangent line to the function $f(x)$ at the point $x_0$.  Near that point, $T_1(x)$ is a very good approximation to $f(x)$.  In fact, $T_1(x)$ can be shown to be the \emph{best} linear approximation to $f(x)$ at $x=x_0$.  Notice that $T_1$ is the Taylor series for $f(x)$ near $x=x_0$ truncated at the first term.  We may write:
+\begin{equation}
+f(x) = T_1(x) + R_1(x)
+\end{equation}
+where $R_1(x)$ is simply $f(x) - T_1(x)$ (in other words, the above equation \emph{defines} $R_1(x)$.  We call $R_1$ the \emph{remainder term} in the first order Taylor expansion of $f(x)$ near $x=x_0$.  It is a measure of how well $T_1(x)$ approximates $f(x)$.  Note that at $x=x_0$, $R_1(x_0) = 0$.  We can generalize our linear approximation to higher order approximations of $f(x)$:
+\subsection{Higher Order Approximation}
+To obtain higher order approximations, we simply expand $f(x)$ in a Taylor series near $x=x_0$ and truncate the series at some finite $n$:
+\begin{equation}
+f(x) = \sum_{k=0}^n \frac{f^k(x_0)}{k!}(x-x_0)^k + R_n(x)
+\end{equation}
+The first term on the right hand side in the equation above is called the \emph{$n^{th}$ degree Taylor polynomial for $f(x)$, centered at $x_0$.} If we truncate the series at $n=2$, we will have a second order (or quadratic) approximation to $f(x)$.  Again, the remainder term is defined by the above equation.\\ \\
+To show that our Taylor polynomial of order $n$ is a 'good' approximation to $f(x)$, we need to know something about the error term (usually that it is negligible in the circumstances we want to consider).  We have the following theorem:
+\begin{thm}{Remainder Theorem}
+
+Suppose that $f$ is $n+1$ times differentiable at the point $x_0$ and let $T_n(x)$ denote the $n^{th}$ degree Taylor polynomial for $f(x)$ centered at $x_0$.  Define 
+\begin{equation}
+R_n  = f(x) - T_n(x)
+\end{equation}
+Then
+\begin{equation}
+R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}
+\end{equation}
+\end{thm}
+This theorem is a valuable tool in determining the convergence of Taylor series.  To prove convergence, we need to show that the remainder term goes to zero as $n$ approaches infinity.  
+\begin{example}
+Show that the Taylor series for $\sin(x)$ centered at $x=0$ converges for all $x$.
+\end{example}
+\begin{proof}
+Using the Remainder theorem, we may write:
+\begin{equation}
+R_n(x) = \sin(x) - T_n(x) = \frac{\sin^{(n+1)}(c)}{(n+1)!}(x^{n+1})
+\end{equation}
+for some $c$ between $x$ and $0$.  Now, the derivatives of $\sin(x)$ are all bounded between $-1$ and $1$ for any value of $x$.  Therefore:
+\begin{equation}
+|R_n(x)| \leq \frac{|x|^{n+1}}{(n+1)!} 
+\end{equation}
+Now, as $n\rightarrow\infty$, $\frac{|x|^{n+1}}{(n+1)!}$ for any $x$.  Thus 
+\begin{equation}
+\lim_{n\rightarrow\infty} R_n(x) = 0
+\end{equation}
+\end{proof}
+Some Taylor series may converge for certain values of $x$ (centered at the point of expansion, $x_0$).  For a series that converges for $|x-x_0|<R$, we refer to '$R$' as the \emph{radius of convergence}.  Sometimes, using the remainder theorem is a convenient way to find the radius of convergence.  If we are interested in convergence alone (and not whether the series converges to the actual function) we can use any of the series convergence tests covered in the previous section.
+
+\begin{example}
+Find the radius of convergence for the Taylor series of $\frac{1}{1+x^2}$ centered at $x=0$.
+\end{example}
+We begin by computing the Taylor series for $\frac{1}{1+x^2}$ centered at $x=0$.\\
+$$f(x) = \frac{1}{1+x^2}$$
+$$f'(x) = \frac{-2x}{(1+x^2)^2}$$
+$$f''(x) = -2(2x)\frac{-2x}{(1+x^2)^3}+\frac{-2}{(1+x^2)^2} = \frac{8x^2}{(1+x^2)^3} + \frac{-2}{(1+x^2)^2}$$
+$$f'''(x) = -3(2x)\frac{8x^2}{(1+x^2)^4} + 2\frac{(8x)}{(1+x^2)^3} + (-2)2x\frac{-2}{(1+x^2)^3} = -3!2^3\frac{x^3}{(1+x^2)^4} + \frac{4!x}{(1+x^2)^3}$$
+$$f^{(4)}(x) = 4! 2^4\frac{x^4}{(1+x^2)^5} -3!2^3(3)\frac{x^2}{(1+x^2)^4} + (-3)(2)\frac{4!x^2}{(1+x^2)^4} + \frac{4!}{(1+x^2)^3} $$
+\par $$= 4! 2^4\frac{x^4}{(1+x^2)^5} -3!2^4(3)\frac{x^2}{(1+x^2)^4}+ \frac{4!}{(1+x^2)^3}$$
+$$f^{(5)}(x) = -5!2^5\frac{x^5}{(1+x^2)^6}+ 2^6(4!)\frac{x^3}{(1+x^2)^5}+2^5(3)(4!)\frac{x^3}{(1+x^2)^5}+(-3!)2^5(3)\frac{x}{(1+x^2)^4} + (-3)2\frac{4!x}{(1+x^2)^4}$$
+\par $$= -5!2^5\frac{x^5}{(1+x^2)^6}+5!2^5\frac{x^3}{(1+x^2)^5}-6!\frac{x}{(1+x^2)^4}$$
+We can see that this is a seriously messy process.  We can save ourselves a lot of grief by noting that we really only want to evaluate the derivatives of our function at $x=0$.  Then all the odd terms are zero.  Now, for the even terms, we see:
+$$f(0) = 1$$
+$$f^{(2)}(0) = -2$$
+$$f^{(4)}(0) = 4!$$
+$$f^{(6)}(0) = -6!$$
+so that $f^{(2n)}(0) = (2n)!$ for $n=1,2,3,...$.  The Taylor series for $f(x)= \frac{1}{1+x^2}$ centered at $x=0$ is given by:
+\begin{equation}
+\frac{1}{1+x^2} = \sum_{n=1}^\infty (-1)^n x^{2n}
+\end{equation}
+Now, writing down a closed form expression for the $(n+1)$ derivative of $\frac{1}{1+x^2}$ is \emph{doable}, so we could apply the remainder theorem - but if we just want to know the radius of convergence, it is much easier to apply the ratio test.  We need to compute:
+\begin{eqnarray*}
+\lim_{n\rightarrow\infty}\frac{|a_{n+1}}{|a_n|} &=& \lim_{n\rightarrow\infty}\frac{|(-1)^{n+1}x^{2n+2}|}{|(-1)^n|x^{2n}}\\
+&=&\lim_{n\rightarrow\infty}x^2\\
+&\leq & 1 \;\;\;\;\mathrm{  for } \;\;\;\;|x|<1
+\end{eqnarray*}
+and we conclude that the series is absolutely convergent for $|x|<1$.
+\begin{exer}
+Determine whether the following Taylor series converge:
+\end{exer}
+\begin{enumerate}
+\item The Taylor series for $\cos(2x)$ centered at $x=0$.  For what values of $x$ does this series converge to $\cos(2x)?$
+\item The Taylor series for $\log(x)$ centered at $x=1$.
+\item The Taylor series for $\exp(-1/x^2)$ centered at $x=1$
+\end{enumerate}
+\end{document}

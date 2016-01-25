@@ -1,0 +1,137 @@
+
+\documentclass[12pt,a4paper]{article} % Use A4 paper with a 12pt font size - different paper sizes will require manual recalculation of page margins and border positions
+
+% Generated with LaTeXDraw 2.0.8
+% Mon Jun 17 19:00:40 EDT 2013
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{marginnote} % Required for margin notes
+\usepackage{wallpaper} % Required to set each page to have a background
+\usepackage{lastpage} % Required to print the total number of pages
+\usepackage[left=1.3cm,right=4.6cm,top=1.8cm,bottom=4.0cm,marginparwidth=3.4cm]{geometry} % Adjust page margins
+\usepackage{amsmath} % Required for equation customization
+\usepackage{amssymb} % Required to include mathematical symbols
+\usepackage{xcolor} % Required to specify colors by name
+\usepackage{amsthm}
+\usepackage{float}
+
+
+\setlength{\parindent}{0cm} % Remove paragraph indentation
+\newcommand{\tab}{\hspace*{2em}} % Defines a new command for some horizontal space
+
+
+\title{Calculus Workshop - Sequences Unit}
+%----------------------------------------------------------------------------------------
+
+\newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{exer}{Exercises}
+\newtheorem{thm}{Therorem}
+\begin{document}
+\maketitle
+
+\section{Sequences}
+A \emph{sequence} is simply an ordered list of objects: $a_1,a_2,a_3,...$.  A finite sequence is a finite list, and an infinite sequence is an infinite list.  The $a_i$ may be numbers, functions or other objects.  For the moment, we will consider sequences of real numbers.  Often we will write:
+\begin{equation}
+\left\{a_n\right\}_{n=1}^\infty
+\end{equation}
+to denote an infinite sequence.  We will often drop the limits in the notation, and then it is assumed that the sequence is indexed from $1$ to $\infty$.  Usually, the elements in our sequence will be defined in terms of the index $n$.  For example, we consider the sequence:
+$$\frac12, \frac14,\frac1{8},\frac1{16},.. $$
+This is the sequence $\left\{\frac{1}{2^n}\right\}$.  
+
+Just as we may define limits of functions at $\infty$, we can define limits of sequences:
+\begin{defn}
+Let $\left\{a_n\right\}$ be an infinite sequence.  If for every $\epsilon>0$, there exists a number $N$ such that if $n>N$,
+\begin{equation*}
+|a_n - L|<\epsilon
+\end{equation*}
+we say that 
+\begin{equation*}
+\lim_{n\rightarrow\infty} a_n = L
+\end{equation*}
+Equivalently, we may say that the sequence $\left\{a_n\right\}$ \emph{converges} to $L$.
+\end{defn}
+\begin{example}
+Prove that $$\lim_{n\rightarrow\infty} \frac1n = 0$$
+\end{example}
+See the example showing that $$\lim_{x\rightarrow\infty}\frac1x =0$$ and substitute $n$ for $x$.
+\begin{exer}
+Prove the following limits:
+\begin{enumerate}
+\item $$\lim_{n\rightarrow\infty} \frac{8n+2}{4n+1} = 2$$
+\item $$\lim_{n\rightarrow\infty} \frac{\cos(n)}{n} = 0$$
+\item $$\lim_{n\rightarrow\infty} \frac{2n}{3n-1} = \frac23$$
+\end{enumerate}
+\end{exer}
+\subsection{Properties of Limits}
+\begin{enumerate}
+\item $$\lim_{n\rightarrow\infty}\left(a_n\pm b_n\right) = \lim_{n\rightarrow\infty} a_n \pm \lim_{n\rightarrow\infty} b_n$$
+\item $$\lim_{n\rightarrow\infty}c a_n = c \lim_{n\rightarrow\infty} a_n$$
+\item $$\lim_{n\rightarrow\infty}\left(a_n b_n\right) = \lim_{n\rightarrow\infty} a_n \lim_{n\rightarrow\infty} b_n$$
+\item $$\lim_{n\rightarrow\infty}\frac{a_n}{b_n} = \frac{\lim_{n\rightarrow\infty} a_n}{ \lim_{n\rightarrow\infty} b_n}$$ so long as $$\lim_{n\rightarrow\infty}b_n\neq 0$$.
+\item Given a sequence $\left\{a_n\right\}$ such that $$\lim_{n\rightarrow\infty} a_n = L$$ and a continuous function $f:\mathbb{R}\rightarrow\mathbb{R}$, $$\lim_{n\rightarrow\infty} f(a_n) = f(L)$$
+\item Squeeze Theorem:  If $a_n\leq b_n\leq c_n$ for all $n>N$, and $$\lim_{n\rightarrow\infty}a_n = \lim_{n\rightarrow\infty} c_n = L$$ then $$\lim_{n\rightarrow\infty}b_n = L$$.
+\item Sandwich Theorem:  If $a_n\leq b_n\leq c_n$ for all $n>N$, and $$\lim_{n\rightarrow\infty}a_n = A<\infty$$  and $$ \lim_{n\rightarrow\infty} c_n = C<\infty$$ then $$\lim_{n\rightarrow\infty}b_n  \mathrm{exists}$$ and  $$A\leq\lim_{n\rightarrow\infty}b_n\leq C$$
+\end{enumerate}
+\section{Sequences of Functions and Convergence}
+As noted in the previous section, a sequence may be an ordered list of numbers, but it could also be an ordered list of other objects.  One very important type of sequence is a sequence of functions.  For example:
+$$f_n(x) = \frac{1}{x^n}$$
+When we consider sequences of functions, we are concerned with \emph{convergence}.  Loosely speaking, we want to know what happens to $f_n$ as $n$ approaches infinity.  We may want to know whether there is a function that $f$ that could somehow be considered the 'limit' of the sequence (but there is more than one way to define such things, thus the vaguery).  If such a limit exists, we might want to know whether the function $f$ is continous, bounded in some way, etc. We will discuss several types of convergence and compare their properties.
+\subsection{Pointwise Convergence}
+The notion of pointwise convergence is the closest to what we have been discussing in terms of limits and convergence, so we begin here.  First the definition:
+\begin{defn}
+A sequence of functions $f_n(x)$ is said to \emph{converge pointwise} to the function $f$ $\iff$ for every $x$ in the domain of $f$, $$\lim_{n\rightarrow\infty} f_n(x) = f(x)$$.
+\end{defn}
+The main idea is: If we fix (any) single point $x_0$ in the domain of $f$, the \emph{sequence of numbers} $f_n(x_0)$ converges to the \emph{number} $f(x_0)$.  So we see that this is just an extension of the convergence of a sequence to every point in the domain of $f$.
+\begin{example}
+Show that the sequence $\left\{\frac{\sin(nx^2)}{\sqrt{n+1}}\right\}$ converges pointwise for all $x\in\mathbb{R}$.
+\end{example}
+\begin{proof}
+We know that $|sin(\theta)|\leq 1$ for all $\theta\in\mathbb{R}$, so
+$$-\frac{1}{\sqrt{n+1}}\leq\frac{\sin(nx^2)}{\sqrt{n+1}}\leq\frac{1}{\sqrt{n+1}}$$
+for all $x\in\mathbb{R}$.  Furthermore, $\lim_{n\rightarrow\infty}\frac{1}{\sqrt{n+1}} = 0$, so by the squeeze theorem, 
+$$\lim_{n\rightarrow\infty}\frac{\sin(nx^2)}{\sqrt{n+1}}=0$$
+\end{proof}
+\begin{exer}
+Show that the following functions converge pointwise to the zero function:
+\end{exer}
+\begin{enumerate}
+\item 
+$$f_n(x) = x^n \;\;\;\; x\in [0,a] \;\;\;\; 0<a<1$$
+\item $$f_n(x) = \frac{log(1+nx)}n\;\;\;\;x\in[0,M]\;\;\;\;0<M<\infty$$
+\item $$f_x(x) = \frac{sin(nx+1)}{\sqrt{n+1}}\;\;\;\;\;x\in (-\infty,\infty)$$ 
+\end{enumerate}
+\subsection{Uniform Convergence}
+In defining pointwise convergence, we were only concerned with whether the limit of the sequence existed at each point.  We did not require that sequences at each point approach their limits at the same rate.  Such convergence can lead to less-than-ideal circumstances, such as a sequence of continuous functions converging to a discontinous limiting function. We will define uniform convergence and discuss how it prevents such outcomes.
+\begin{defn}
+We say that the sequence of functions $\left\{f_n\right\}$ \emph{converges uniformly} to $f$ if for every $\epsilon>0$, there exists $N$ such that
+$$|f_n(x) -f(x)|<\epsilon$$ for all $n>N$ and \emph{every $x$ in the domain of $f$}
+\end{defn} 
+In other words, uniform convergence requires that the same $N$ 'works' for every point $x$.   A sequence that converges uniformly converges pointwise.  The converse is not true, as may be seen in the following counter-example:
+\begin{example}
+Show that $$\lim_{n\rightarrow\infty}f_n = \frac{nx}{1+n^2x^2}=0$$
+but the sequence does not converge uniformly.
+\end{example}
+\begin{proof}
+\begin{eqnarray}
+ \lim_{n\rightarrow\infty}\frac{nx}{1+n^2x^2} &=& x\lim_{n\rightarrow\infty}\frac{n}{1+n^2x^2}\\
+ &=& x\lim_{n\rightarrow\infty}\frac{n}{n^2x^2}\\
+ &=&\frac1x\lim_{n\rightarrow\infty}\frac{n}{n^2}\\
+ &=&\frac1x\lim_{n\rightarrow\infty}\frac{1}{n}\\
+ &=&0
+\end{eqnarray}
+To see that $f_n$ does not converge uniformly to $0$, let $x=\frac1n$ and let $\epsilon = \frac12$.  Then:
+\begin{eqnarray}
+\left|f_n\left(\frac1n\right) - f\right| &=& \left|\frac{1}{2} - 0\right|\\
+&=& \frac12
+\end{eqnarray}
+so there is no $N$ for which 
+$$\left|f_n\left(\frac1n\right) - f\right|<\epsilon$$
+\end{proof}
+\begin{exer}
+Show whether the sequences of functions in the previous section converge uniformly.
+\end{exer}
+\end{document}
