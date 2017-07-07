@@ -1,0 +1,45 @@
+
+\documentclass[12pt,a4paper]{article} % Use A4 paper with a 12pt font size - different paper sizes will require manual recalculation of page margins and border positions
+
+% Generated with LaTeXDraw 2.0.8
+% Mon Jun 17 19:00:40 EDT 2013
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{marginnote} % Required for margin notes
+\usepackage{wallpaper} % Required to set each page to have a background
+\usepackage{lastpage} % Required to print the total number of pages
+\usepackage[left=1.3cm,right=4.6cm,top=1.8cm,bottom=4.0cm,marginparwidth=3.4cm]{geometry} % Adjust page margins
+\usepackage{amsmath} % Required for equation customization
+\usepackage{amssymb} % Required to include mathematical symbols
+\usepackage{xcolor} % Required to specify colors by name
+\usepackage{amsthm}
+\usepackage{float}
+
+
+\setlength{\parindent}{0cm} % Remove paragraph indentation
+\newcommand{\tab}{\hspace*{2em}} % Defines a new command for some horizontal space
+
+
+\title{Calculus and Linear Algebra Workshop Notes and Problems - Basics of Derivatives and Differentiation}
+%----------------------------------------------------------------------------------------
+
+\newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{exer}{Exercises}
+\newtheorem{thm}{Therorem}
+\begin{document}
+\maketitle
+\section{Integration}
+Like the derivative, the definite integral is defined as a limit.
+\begin{defn}
+Let $f$ be a function defined on the interval $[a,b]$. We define the definite integral of $f$ on $[a,b]$ as:
+$$\int_a^bf(x)dx	=	\lim_{\max(\Delta x_k)\rightarrow 0}\sum_{k=1}^nf(x_k^*)\Delta x_k$$
+where $a=x_1\leq x_2\leq ... \leq x_n=b$ is a partition of the interval $[a,b]$, $\Delta_k = x_{k+1}-x_k$ for $k=1,...,n-1$ and $x_k\leq x_k^*\leq x_{k+1}$. 
+\end{defn}
+Each term in the sum above is the area of a rectangle, with height $f(x_k^*)$ and width $x_{k+1}-x_k$. In the limit, we make the width of the rectangles approach zero. The quantity we calculate is the area under the curve of the function $f(x)$ on the interval $[a,b]$.
+\subsection{Computing Definite Integrals}
+
+\end{document}
