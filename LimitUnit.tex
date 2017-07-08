@@ -20,7 +20,7 @@
 \newcommand{\tab}{\hspace*{2em}} % Defines a new command for some horizontal space
 
 
-\title{Calculus Workshop - Limits Unit}
+\title{Calculus Review - Limits}
 %----------------------------------------------------------------------------------------
 
 \newtheorem{defn}{Definition}
@@ -32,7 +32,12 @@
 \maketitle
 
 \section{Limits} 
-In order to prove things about limits, we need to have a precise, formal definition:
+Now it is time to make precise our intuitive statement that 
+
+$$\lim\limits_{x\rightarrow a} f(x) = L$$
+
+means that as $x$ gets close to $a$, $f(x)$ gets close to $L$. We need to turn this into a definition that allows us to prove certain properties of limits, and to use those to make new definitions (such as derivatives and integrals). First, let's have a look at the formal definition, and then we'll take it apart step-by-step to see what it means.
+
 \begin{defn}
 Let $f$ be a real-valued function of a real variable, $x$.  Let $a,L$ be fixed real numbers.  If for every $\epsilon >0$, there exists some $\delta>0$ such that
 \begin{equation*}
@@ -47,7 +52,16 @@ we say that
 \lim_{x\rightarrow a} f(x) = L
 \end{equation*}
 \end{defn}
-Now, let us parse this statement into English.  We are saying that given any specified tolerance ($\epsilon$), which can be arbitrarily small, we can find a distance $\delta$ so that if $x$ is within $\delta$ of $a$, then $f(x)$ will be within $\epsilon$ of $L$.  Loosely speaking, if $x$ is close enough to $a$, $f(x)$ will be close to $L$.  Pictorally:
+ One of the things that can be confusing about this definition is that it looks bit backwards: We want $x$ close to $a$ to mean that $f(x)$ is close to $L$, but we start the definition talking about $f(x)$ and $L$. We have to reframe our intuitive statement a bit so that it lines up with our $\delta$ and $\epsilon$ nonsense.\\
+ 
+Instead of thinking of $x$ approaching $a$, we start by specifying \emph{how close we would like $f(x)$ to be to $L$}, and we ask how close $x$ needs to be to $a$ to make that possible. So we specify that we want $f(x)$ to be 'within $\epsilon$' of $L$, i.e. we want 
+
+$$|f(x) - L| < \epsilon.$$
+ 
+We are saying that given any specified tolerance ($\epsilon$), which can be arbitrarily small, we can find a distance $\delta$ so that if $x$ is within $\delta$ of $a$, then $f(x)$ will be within $\epsilon$ of $L$. 
+
+
+Loosely speaking, if $x$ is close enough to $a$, $f(x)$ will be close to $L$.  Pictorally:
 
 \includegraphics[height=3in]{limit.pdf}
 

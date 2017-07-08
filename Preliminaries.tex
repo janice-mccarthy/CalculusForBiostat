@@ -22,7 +22,7 @@
 \newcommand{\tab}{\hspace*{2em}} % Defines a new command for some horizontal space
 
 
-\title{Calculus Workshop - Preliminaries}
+\title{Calculus Review - Preliminaries}
 %----------------------------------------------------------------------------------------
 
 \newtheorem{defn}{Definition}
@@ -34,12 +34,23 @@
 \maketitle
 \section{Preliminaries}
 \subsection{Absolute Value}
-In the following topics, it is helpful to think of such things as $|x -a|$ as 'distances'.  So, when you see the absolute value of a difference, you really should be thinking of the distance between the numbers on the real line.  For example, consider:
+Many students who have taken Calculus courses aren't aware that the term 'calculus' simply means 'a method of calculation'. What we have become to call Calculus (with a capital 'C') is actually shortened from 'Calculus of Limits'. Everything we do in Calculus concerns limits. We begin with limits of functions at a point, at infinity, etc. and then study derivatives, which are limits of slopes. Integrals are limits of sums. Sums of infinite series are defined as limits of sequences of partial sums.\\
+
+Because everything we review will concern limits, it's pretty important to understand what limits are. Most students will recall that\\
+
+$$\lim\limits_{x\rightarrow a} f(x) = L$$
+
+means that 'as $x$ gets close to $a$, $f(x)$ gets close to $L$'. This is a great intuitive statement, but we need to be more precise, starting with what 'close' means.\\
+
+It is helpful to think of such things as $|x -a|$ as 'distances'.  So, when you see the absolute value of a difference, you really should be thinking of the distance between the numbers on the real line.  For example, consider:
 $$|(-2) - 1|$$
-We can think of this expression as the distance between $-2$ and $1$ on the number line:
+We can think of this expression as the distance between $-2$ and $1$ on the number line:\\
 \includegraphics[]{dist.jpg}
 
-Some useful properties of absolute value:
+Thus, we can interpret $x$ is close to $a$ to mean that $|x-a|$ is small (and similar for $f(x)$ and $L$ - they are close when $|f(x) - L|$ is small).\\
+
+Our job in the next lesson will be to make it clear what 'small' means, but for now, here are some helpful properties of absolute value:\\
+
 \begin{enumerate}
 \item If $|x|\leq a$, then $-a\leq x\leq a$
 \item Triangle inequality:  $|x +y| \leq |x| +|y|$
