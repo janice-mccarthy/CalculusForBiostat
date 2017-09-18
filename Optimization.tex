@@ -68,6 +68,23 @@ If we are considering a function on a closed interval, we must also check the en
 \includegraphics[height=3in]{Extrema2.pdf}
 \caption{Global vs. Local Extrema.  We consider the same function as in the previous figure, but over a slightly different interval.  We can see from the graph that the global minimum over the interval $[a,b]$ occurs at the endpoint $b$.  The global maximum is at point $B$, and $A$ is a local minimum.}
 \end{figure} 
+\subsection{Characterizing Max and Min}
+Suppose we have a function $f(x)$, and we have found $f'(x)$, set it to zero and found some critical points. How do we know whether we have a max or a min at that point? \\
+
+We can note that the sign of the derivative at a point tells us whether the function is increasing or decreasing at that point. If we take the derivative of $f'(x)$, (that would be $f''(x)$) we can determine whether $f'(x)$ is increasing or decreasing. \\
+
+Now, at the critical point, $f'(x)$ is zero. So, if the critical point is a max or a min, $f'(x)$ is changing sign - either negative to positive (increasing, f'' >0) or positive to negative (decreasing, f'' <0). In the first case, we have a minimum, in the second case, a max. This is known as the 'second derivative test'.
+
+** second derivative test.
+
+** failure/first derivative
+
+** examples
+
+$$(x-2)(x+4)(x-3)$$
+
+$$\prod\limits_{i=1}^n \exp\left(-\left(x_i-\mu\right)^2\right)$$
+
 \newpage
 \subsection{Monotone Functions and Optimization}
 Monotone functions have an important property with respect to optimization: we can compose a monotone function with a function of interest without changing the location of extrema.  Often, we will use the monotone function $\log(x)$. Recall that $\log$ has the property that:
