@@ -32,11 +32,21 @@
 \maketitle
 
 \section{Limits} 
-Now it is time to make precise our intuitive statement that 
+Many calculus texts begin with a version of "Zeno's Paradox", that goes something like this: If one were to shoot an arrow at a tree, at some point, the arrow is 1/2 the distance from the tree, and then 1/2 + 1/4, and then 1/2 + 1/4 + 1/8. We can keep halving the distance, but we'll never (in finite time) get to 0, and therefore the distance is never reached and the arrow doesn't hit the tree. But of course, the arrow \emph{does} reach the tree. We therefore have a paradox.\\\\
+
+In mathematics, we often resolve paradoxes by defining something or setting some requirement. For example, when defining sets, Russel (and others in parallel) found that they couldn't just say a set is \emph{any} collection of objects, because that led to a paradox. The result was a set of 'axioms' that define all the properties a set must have.\\\\
+
+For the case of Zeno's paradox, the notion of a limit was developed. We can write the sum we want to compute this way:
+
+$$\sum\limits_{n=0}^\infty \frac1{2^n}$$
+
+\vspace{0.2in}
+If we want to actually compute this, or even show that it's a finite number, we need to define limits. Our intuition is that the sum should add to 1, and the amount we add should eventually go to zero. \\\\
+When we talk about the limit $L$ of a function, say $f(x)$, as $x$ approaches some value $a$, we can think of it this way: as $x$ gets closer to $a$, $f(x)$ should get closer to $L$.
 
 $$\lim\limits_{x\rightarrow a} f(x) = L$$
 
-means that as $x$ gets close to $a$, $f(x)$ gets close to $L$. We need to turn this into a definition that allows us to prove certain properties of limits, and to use those to make new definitions (such as derivatives and integrals). First, let's have a look at the formal definition, and then we'll take it apart step-by-step to see what it means.
+We need to turn this into a definition that allows us to prove certain properties of limits, and to use those to make new definitions (such as derivatives and integrals). First, let's have a look at the formal definition, and then we'll take it apart step-by-step to see what it means.
 
 \begin{defn}
 Let $f$ be a real-valued function of a real variable, $x$.  Let $a,L$ be fixed real numbers.  If for every $\epsilon >0$, there exists some $\delta>0$ such that
