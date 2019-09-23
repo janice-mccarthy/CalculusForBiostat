@@ -29,31 +29,11 @@
 \newtheorem{example}{Example}
 \newtheorem{prop}{Proposition}
 \newtheorem{exer}{Exercises}
-\newtheorem{thm}{Therorem}
+\newtheorem{thm}{Theorem}
 \begin{document}
 \maketitle
-\subsection{Monotone Functions}
-A class of functions that is often useful to us in analysis is the class of \emph{monotone} functions.  A monotone function is simply a function that doesn't 'go up and down' (think of a monotone voice).  Formally:
-\begin{defn}
-A function $f(x)$ is said to be \emph{monotonically increasing} if
-$$f(x_2) > f(x_1)$$
-whenever
-$$x_2 > x_1$$ 
-Conversely, if 
-$$f(x_2) < f(x_1)$$
-whenever
-$$x_2 > x_1$$
-$f(x)$ is said to be \emph{monotonically decreasing} 
-\end{defn}
-When the inequalities are not strict, we say that $f(x)$ is \emph{monotonically non-decreasing} or \emph{monotonically non-increasing}, respectively. \\\\
- It is easy to see that a function $f(x)$ is monotonically increasing $\iff f'(x)\leq0$ for all $x$, and $f(x)$ is monotonically decreasing $\iff f'(x)\geq0$ for all $x$.   
-\begin{example}
-$\log(x)$ is monotonically increasing on the interval $(0,\infty)$. 
-\end{example}
-\begin{proof}
-$$\frac{d}{dx}\log(x) = \frac{1}{x} > 0 \;\;\;\;\;\;\mathrm{for all }\;\; x\in(0,\infty)$$
-\end{proof}
-\subsection{Optimization of Functions}
+
+\section{Optimization of Functions}
 One of the most important applications of differential calculus is the 'optimization' of functions, where 'optimization' means finding out where a function is either maximized (has its greatest value) or minimized (has its smallest value).  These values are called 'extrema'.  \\\\
 There are two types of extrema: Global and local.  'Global' means we look for an 'extreme value' (max or min) over the entire domain of the function.  'Local' means that we consider the extreme values of a function within a subset of the domain.  This nomenclature can cause some confusion, as we sometimes consider optimization over a closed interval that is a subset of the domain to be 'global' - in this case, 'global' means over the interval being considered.  Let's consider the procedure for locating extreme values and then we will clarify this.\\\\
 
@@ -73,19 +53,51 @@ Suppose we have a function $f(x)$, and we have found $f'(x)$, set it to zero and
 
 We can note that the sign of the derivative at a point tells us whether the function is increasing or decreasing at that point. If we take the derivative of $f'(x)$, (that would be $f''(x)$) we can determine whether $f'(x)$ is increasing or decreasing. \\
 
-Now, at the critical point, $f'(x)$ is zero. So, if the critical point is a max or a min, $f'(x)$ is changing sign - either negative to positive (increasing, f'' >0) or positive to negative (decreasing, f'' <0). In the first case, we have a minimum, in the second case, a max. This is known as the 'second derivative test'.
+Now, at the critical point, $f'(x)$ is zero. So, if the critical point is a max or a min, $f'(x)$ is changing sign - either negative to positive (increasing, $f'' >0$) or positive to negative (decreasing, $f'' <0$). In the first case, we have a minimum, in the second case, a max. This is known as the 'second derivative test'.\\
 
-** second derivative test.
+If the second derivative is zero at the critical point, the second derivative test fails. In this case, we can use the 'first derivative test', where we directly test for a change in sign of the first derivative around the critical point. \\
 
-** failure/first derivative
+Consider the functions $f(x) = x^4$ and $f(x) = x^3$. Both have a singular critical point at $x = 0$, but the second derivative also vanishes at $x=0$. Plot these functions and examine what is happening with the first derivative around the critical point. what is the difference in behavior?\\
 
-** examples
+\begin{exer}
+Characterize extrema for the following:
 
-$$(x-2)(x+4)(x-3)$$
+\begin{enumerate}
+\item 
+$$f(x) = x^2, \;\;\;\;\;\;\;\textrm{ on the interval } [-1,2]$$
 
-$$\prod\limits_{i=1}^n \exp\left(-\left(x_i-\mu\right)^2\right)$$
+\item 
+$$f(x) = x^3 + 2, \;\;\;\;\;\;\;$$
+
+\item 
+
+$$-6 x + \frac{17 x^2}{2} - \frac{14 x^3}{3} + \frac{3 x^4}{4}$$
+\end{enumerate}
+
+\end{exer}
 
 \newpage
+\subsection{Monotone Functions}
+A class of functions that is often useful to us in analysis is the class of \emph{monotone} functions.  A monotone function is simply a function that doesn't 'go up and down' (think of a monotone voice).  Formally:
+\begin{defn}
+A function $f(x)$ is said to be \emph{monotonically increasing} if
+$$f(x_2) > f(x_1)$$
+whenever
+$$x_2 > x_1$$ 
+Conversely, if 
+$$f(x_2) < f(x_1)$$
+whenever
+$$x_2 > x_1$$
+$f(x)$ is said to be \emph{monotonically decreasing} 
+\end{defn}
+When the inequalities are not strict, we say that $f(x)$ is \emph{monotonically non-decreasing} or \emph{monotonically non-increasing}, respectively. \\\\
+ It is easy to see that a function $f(x)$ is monotonically increasing $\iff f'(x)\geq0$ for all $x$, and $f(x)$ is monotonically decreasing $\iff f'(x)\leq0$ for all $x$.   
+\begin{example}
+$\log(x)$ is monotonically increasing on the interval $(0,\infty)$. 
+\end{example}
+\begin{proof}
+$$\frac{d}{dx}\log(x) = \frac{1}{x} > 0 \;\;\;\;\;\;\mathrm{for all }\;\; x\in(0,\infty)$$
+\end{proof}
 \subsection{Monotone Functions and Optimization}
 Monotone functions have an important property with respect to optimization: we can compose a monotone function with a function of interest without changing the location of extrema.  Often, we will use the monotone function $\log(x)$. Recall that $\log$ has the property that:
 $$\log(xy) = \log(x) + \log(y)$$
